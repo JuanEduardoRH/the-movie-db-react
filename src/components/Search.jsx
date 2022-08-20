@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import CardList from './CardList';
 import defaultImage from '../images/image-not-found.png';
 
+const { keyMdb } = require("../credentials/apiKeyMdb.json");
+
 let timeout;
 
 const getMovies = async (keyword) => {
     const path = 'https://image.tmdb.org/t/p/w500';
-    const url = 'https://api.themoviedb.org/3/search/movie?api_key={apikey}&query=';
+    const url = `https://api.themoviedb.org/3/search/movie?api_key=${keyMdb}&query=`;
     const response = await fetch(url + keyword);
     const { results } = await response.json();
 

@@ -3,13 +3,14 @@ import Card from '../components/CardGrid';
 import Search from '../components/Search';
 import DefaultImage from '../images/image-not-found.png';
 
+const { keyMdb } = require("../credentials/apiKeyMdb.json");
+
 function Home() {
 
     const path = 'https://image.tmdb.org/t/p/w500';
 
     const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-
 
     useEffect(() => {
         window.addEventListener('scroll', () => {
@@ -23,19 +24,18 @@ function Home() {
         });
     }, [currentPage]);
 
-    useEffect(() => {
-        getNowPlayingMovies(currentPage);
-    }, [currentPage]);
-
     const getNowPlayingMovies = async (currentPage) => {
 
-        const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?page=${currentPage}&api_key={apikey}`);
+        const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?page=${currentPage}&api_key=${keyMdb}`);
         const { results } = await response.json();
         const data = results.map(movie => ({ id: movie.id, poster_path: movie.poster_path ? path + movie.poster_path : DefaultImage }));
 
         setNowPlayingMovies((movies) => [...movies, ...data]);
     }
 
+    useEffect(() => {
+        getNowPlayingMovies(currentPage);
+    }, [currentPage]);
 
     return (
         <div className='container pt-2'>
