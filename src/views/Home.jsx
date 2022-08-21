@@ -13,28 +13,36 @@ function Home() {
     const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
-        window.addEventListener('scroll', () => {
+
+        const handleScroll = () => {
             const totalScrolled = window.scrollY + window.innerHeight;
             const remainigScroll = document.body.scrollHeight - totalScrolled;
 
             if (remainigScroll > 80) return;
 
-            console.log('nueva pagina');
             setCurrentPage(currentPage + 1);
-        });
+        }
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => { window.removeEventListener('scroll', handleScroll) };
     }, [currentPage]);
 
     const getNowPlayingMovies = async (currentPage) => {
 
         const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?page=${currentPage}&api_key=${keyMdb}`);
         const { results } = await response.json();
-        const data = results.map(movie => ({ id: movie.id, poster_path: movie.poster_path ? path + movie.poster_path : DefaultImage }));
-
-        setNowPlayingMovies((movies) => [...movies, ...data]);
+        return results.map(movie => ({ id: movie.id, poster_path: movie.poster_path ? path + movie.poster_path : DefaultImage }));
     }
 
     useEffect(() => {
-        getNowPlayingMovies(currentPage);
+        let ignore = false;
+
+        const response = getNowPlayingMovies(currentPage);
+
+        response.then((data) => !ignore && setNowPlayingMovies((movies) => [...movies, ...data]));
+
+        return () => { ignore = true };
     }, [currentPage]);
 
     return (
