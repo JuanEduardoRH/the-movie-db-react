@@ -29,7 +29,6 @@ function Home() {
         return () => { window.removeEventListener('scroll', handleScroll) };
     }, [currentPage]);
 
-    
     /* cada que cambie el valor de currentPage, entonces obtendremos las siguientes peliculas */
     useEffect(() => {
 
