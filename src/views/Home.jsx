@@ -12,6 +12,7 @@ function Home() {
     const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
 
+    /* cada que hacemos scroll y lleguemos aun limite, entonces obtendremos las siguientes peliculas */
     useEffect(() => {
 
         const handleScroll = () => {
@@ -28,19 +29,20 @@ function Home() {
         return () => { window.removeEventListener('scroll', handleScroll) };
     }, [currentPage]);
 
-    const getNowPlayingMovies = async (currentPage) => {
-
-        const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?page=${currentPage}&api_key=${keyMdb}`);
-        const { results } = await response.json();
-        return results.map(movie => ({ id: movie.id, poster_path: movie.poster_path ? path + movie.poster_path : DefaultImage }));
-    }
-
+    
+    /* cada que cambie el valor de currentPage, entonces obtendremos las siguientes peliculas */
     useEffect(() => {
+
         let ignore = false;
 
-        const response = getNowPlayingMovies(currentPage);
+        const getNowPlayingMovies = async (currentPage) => {
 
-        response.then((data) => !ignore && setNowPlayingMovies((movies) => [...movies, ...data]));
+            const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?page=${currentPage}&api_key=${keyMdb}`);
+            const { results } = await response.json();
+            return results.map(movie => ({ id: movie.id, poster_path: movie.poster_path ? path + movie.poster_path : DefaultImage }));
+        }
+
+        getNowPlayingMovies(currentPage).then((data) => !ignore && setNowPlayingMovies((movies) => [...movies, ...data]));
 
         return () => { ignore = true };
     }, [currentPage]);
