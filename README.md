@@ -1,5 +1,7 @@
 # The movie db - react app
 
+## [Ver demo](https://juaneduardorh.github.io/the-movie-db-react/)
+
 Esta aplicación consume la API de [The movie DB](https://www.themoviedb.org) , la cual se encarga de proveer contenido relacionado a películas.
 
 La aplicación cuenta con una sección encargada de mostrar las películas más actuales, este mismo modulo, cuenta con una funcionalidad lazy loading, a medida que uno baja, el contenido ira cargando
