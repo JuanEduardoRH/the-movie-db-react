@@ -1,37 +1,10 @@
-.card-animation{
-    transition: all 0.15s ease-in;
-    cursor: pointer;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-.card-animation:hover{
-    transform: scale(1.05);
-}
 
-.search-results{
-    transition: all 0.2s ease-in;
-    visibility: hidden;
-    opacity: 0;
-    top: calc(100% + 10px);
-    z-index: 2;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.search-results.active{
-    visibility: visible;
-    opacity: 1;
-    top: 100%;
-}
-
-.content-searching, .content-result{
-    transition: all 0.2s ease-in;
-    visibility: hidden;
-    opacity: 0;
-}
-
-.content-searching.active, .content-result.active{
-    visibility: visible;
-    opacity: 1;
-}
-
-.img-cover{
-    object-fit: cover;
+html {
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }

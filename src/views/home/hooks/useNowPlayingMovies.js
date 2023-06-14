@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { getNowPlayingMovies } from "../Helpers/getNowPlayingMovies";
+import { getNowPlayingMovies } from "../../../services";
 
-
-export const useFetchNowPlayingMovies = (currentPage, setListMovies) => {
+export const useNowPlayingMovies = (currentPage, setListMovies) => {
 
     const [isLoading, setIsLoading] = useState(true);
 

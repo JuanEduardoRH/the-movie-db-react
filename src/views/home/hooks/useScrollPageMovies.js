@@ -9,7 +9,7 @@ export const useScrollPageMovies = () => {
         const remainigScroll = document.body.scrollHeight - totalScrolled;
 
         if (remainigScroll > 80) return;
-        
+
         setCurrentPage(currentPage + 1);
     }
 
