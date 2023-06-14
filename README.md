@@ -12,3 +12,23 @@ Por el momento el proyecto está finalizado, este puede ser retomado en dado cas
 - React v18
 - React icons
 - Tailwind CSS v3
+
+---
+
+## Instalacion
+
+Lo único que necesitaremos, es tener instalado `Node JS` en nuestro equipo, desde la versión `14.18+` en adelante.
+
+Posteriormente, procederemos a ejecutar en la raíz de nuestro proyecto, el siguiente comando:
+```
+npm install
+```
+Esto descargara e instalara todas las dependencias necesarias para levantar el proyecto.
+Luego deberás crear un archivo `.env` en la raíz del proyecto, es aquí donde agregaremos ciertas variables de entorno para el correcto funcionamiento de nuestra aplicación:
+
+```
+VITE_KEY_MDB='…'
+VITE_TOKEN_MDB='…'
+```
+
+Para eso deberás crear una cuenta en [The movie DB](https://www.themoviedb.org) y asignar los valores a los respectivos campos.
