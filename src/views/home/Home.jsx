@@ -24,13 +24,13 @@ export const Home = () => {
 
     return (
         <div className='container mx-auto pt-2'>
-            <div className='text-center pb-5'>
-                <h2 className='text-3xl font-bold pb-5'>Busca tu pelicula</h2>
+            <div className='pb-5'>
+                <h2 className='text-primary text-4xl font-bold pb-5'>Busca tu pelicula</h2>
                 <Search />
             </div>
 
-            <div className='text-center pb-5'>
-                <h2 className='text-3xl font-bold pb-10'>Peliculas recientes</h2>
+            <div className='pb-5'>
+                <h2 className='text-primary text-4xl font-bold pb-10'>Peliculas recientes</h2>
                 <div className='card-container grid grid-cols-4 gap-8'>
                     {isLoading && (<h1>Cargando...</h1>)}
                     {listMovies.map((movie) => <MovieCard key={movie.id} {...movie} />)}
