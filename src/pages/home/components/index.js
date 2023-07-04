@@ -1,3 +1,4 @@
 export * from './Search'
 export * from './MovieCard'
-export * from './SwiperUpcoming'
+export * from './SwiperPopular'
+export * from './NowPlaying'

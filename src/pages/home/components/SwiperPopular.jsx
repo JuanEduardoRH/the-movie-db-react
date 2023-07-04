@@ -4,7 +4,7 @@ import { Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { useVote } from "../../../hooks";
-import { useUpcomingMovies } from "../hooks"
+import { usePopularMovies } from "../hooks"
 
 import { MdCalendarMonth, MdOutlineArrowForward, MdStar } from "react-icons/md";
 import { TfiThumbUp } from "react-icons/tfi";
@@ -14,9 +14,9 @@ import dateFormat from "dateformat";
 import { Button } from '../../../components';
 
 
-export const SwiperUpcoming = () => {
+export const SwiperPopular = () => {
 
-   const { data, isLoading } = useUpcomingMovies();
+   const { data, isLoading } = usePopularMovies();
 
    return (
       <Swiper
@@ -43,13 +43,13 @@ const MovieSlide = ({ title, backdrop_path, vote_average, overview, release_date
    const now = new Date(release_date);
 
    return (
-      <div className="flex h-[500px] relative bg-primary">
+      <div className="flex h-[700px] relative bg-primary">
          <img className="w-full h-full object-cover opacity-90 absolute" src={`${config.pathImg}/original/${backdrop_path}`} />
-         <div className="md:bg-gradient-to-t from-primary from-5% inset-0 absolute"></div>
+         <div className="bg-gradient-to-t from-primary from-5% inset-0 absolute"></div>
          <div className="container px-2 sm:px-4 m-auto relative text-white">
-            <h1 className="md:text-6xl mb-4">{title}</h1>
-            <p className="mb-2 line-clamp-4">{overview}</p>
-            <div className="flex gap-3 items-center mb-4">
+            <h1 className="md:text-6xl mb-5">{title}</h1>
+            <p className="line-clamp-5 mb-5">{overview}</p>
+            <div className="flex gap-3 items-center mb-5">
                <div className="flex gap-1 items-center">
                   <MdStar className="text-yellow-500" />
                   {average}
