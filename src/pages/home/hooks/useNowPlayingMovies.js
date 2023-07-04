@@ -15,17 +15,24 @@ export const useNowPlayingMovies = () => {
     const [movies, setMovies] = useState([]);
 
     /**
+    * a medida que vamos navegando en el paginador,
+    * se gatillara una peticion para obtener nuevos resultados
+    */
+    
+    const [page, setPage] = useState(1);
+
+
+    /**
     * cada que hacemos scroll y lleguemos aun limite, entonces obtendremos las siguientes peliculas
     */
-
-    const { currentPage } = useScrollPageMovies();
+    // const { currentPage } = useScrollPageMovies();
 
     /**
      * cada que cambie el valor de currentPage, entonces obtendremos las siguientes peliculas 
      */
 
-    const { data: response, isLoading } = useQuery(['now-playing-movies', currentPage], () => useFetch({
-        url: `/movie/now_playing?page=${currentPage}&api_key=${config.keyMdb}`
+    const { data: response, isLoading } = useQuery(['now-playing-movies', page], () => useFetch({
+        url: `/movie/now_playing?page=${page}&api_key=${config.keyMdb}`
     }));
 
     const newMovies = response?.results.map(movie => ({
