@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useFetch } from "../../../hooks";
+import config from "../../../utils/config";
 
 export const useHoverCard = (id) => {
 
@@ -9,7 +10,7 @@ export const useHoverCard = (id) => {
 
     useQuery({
         queryKey: ['detail-movie', id],
-        queryFn: () => useFetch({ url: `/movie/${id}` }),
+        queryFn: () => useFetch({ url: `/movie/${id}`, token: config.tokenMdb }),
         enabled: enableSearch,
         onSuccess: (data) => setDetail({ ...data })
     });
