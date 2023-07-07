@@ -1,4 +1,4 @@
-export * from './useHoverCard'
+export * from './useMovieCard'
 export * from './useSearch'
 export * from './useNowPlayingMovies'
 export * from './useScrollPageMovies'

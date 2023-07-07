@@ -3,6 +3,7 @@ export * from './CardList';
 export * from './CardSkeleton';
 export * from './Modal';
 export * from './Button';
+export * from './ScoreIndicator';
 
 export * from './form';
 export * from './pagination';

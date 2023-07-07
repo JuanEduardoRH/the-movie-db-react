@@ -2,11 +2,14 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useFetch } from "../../../hooks";
 import config from "../../../utils/config";
+import { useNavigate } from "react-router-dom";
 
-export const useHoverCard = (id) => {
+export const useMovieCard = (id) => {
 
     const [enableSearch, setEnableSearch] = useState(false);
     const [detail, setDetail] = useState({});
+
+    const navigate = useNavigate();
 
     useQuery({
         queryKey: ['detail-movie', id],
@@ -19,5 +22,9 @@ export const useHoverCard = (id) => {
         !enableSearch && setEnableSearch(true);
     };
 
-    return { detail, handlerMouseEnter }
+    const handlerClick = () => {
+        navigate(`/${id}`, { state: { id, ...detail } });
+    };
+
+    return { detail, handlerMouseEnter, handlerClick }
 }
