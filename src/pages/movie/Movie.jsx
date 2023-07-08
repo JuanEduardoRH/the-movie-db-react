@@ -1,4 +1,4 @@
-import { MovieInfo } from "./components";
+import { AsideInfo, MovieInfo, SimilarSwiper } from "./components";
 import { useMovie } from "./hooks"
 
 
@@ -11,7 +11,9 @@ export const Movie = () => {
     return (
         <>
             <MovieInfo {...data} />
-            <div className="container px-2 sm:px-4 mx-auto pt-10 pb-5">
+            <div className="container flex gap-8 px-2 sm:px-4 mx-auto pt-10 pb-5">
+                <SimilarSwiper id={data.id} />
+                <AsideInfo {...data} />
             </div>
         </>
     )
