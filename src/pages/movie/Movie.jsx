@@ -1,4 +1,4 @@
-import { AsideInfo, MovieInfo, SimilarSwiper } from "./components";
+import { AsideInfo, GalleryMovie, MovieInfo, SimilarSwiper } from "./components";
 import { useMovie } from "./hooks"
 
 
@@ -11,9 +11,14 @@ export const Movie = () => {
     return (
         <>
             <MovieInfo {...data} />
-            <div className="container flex gap-8 px-2 sm:px-4 mx-auto pt-10 pb-5">
-                <SimilarSwiper id={data.id} />
-                <AsideInfo {...data} />
+            <div className="container px-2 sm:px-4 mx-auto pt-10 pb-5">
+                <div className="grid grid-cols-2 md:grid-flow-col gap-8">
+                    <div className="col-span-2">
+                        <SimilarSwiper id={data.id} />
+                        <GalleryMovie id={data.id} />
+                    </div>
+                    <AsideInfo {...data} />
+                </div>
             </div>
         </>
     )

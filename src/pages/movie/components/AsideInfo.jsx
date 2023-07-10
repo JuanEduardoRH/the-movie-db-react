@@ -6,7 +6,7 @@ export const AsideInfo = ({ id, title, status, spoken_languages, budget, revenue
     const { data, isLoading } = useKeywords(id);
 
     return (
-        <div className="w-60 h-96 text-white">
+        <div className="col-span-2 md:w-60 text-white">
             <div className="mb-4">
                 <strong className="block font-medium">Título original</strong>
                 <small>{title}</small>
