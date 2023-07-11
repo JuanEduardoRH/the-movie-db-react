@@ -1,4 +1,4 @@
-import { AsideInfo, GalleryMovie, MovieInfo, SimilarSwiper } from "./components";
+import { AsideInfo, GalleryMovie, MovieInfo, Reviews, SimilarSwiper } from "./components";
 import { useMovie } from "./hooks"
 
 
@@ -16,6 +16,7 @@ export const Movie = () => {
                     <div className="col-span-2">
                         <SimilarSwiper id={data.id} />
                         <GalleryMovie id={data.id} />
+                        <Reviews id={data.id} />
                     </div>
                     <AsideInfo {...data} />
                 </div>
