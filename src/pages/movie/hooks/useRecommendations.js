@@ -13,5 +13,7 @@ export const useRecommendations = (id) => {
 
     const movies = response?.results ?? []
 
-    return { movies, isLoading }
+    const isEmptyData = () => movies.length <= 0 && !isLoading;
+
+    return { movies, isLoading, isEmptyData }
 }

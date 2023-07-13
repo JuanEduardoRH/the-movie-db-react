@@ -15,7 +15,8 @@ export const MovieInfo = ({ release_date, poster_path, backdrop_path, title, gen
     return (
         <div className="relative">
             <img className="w-full h-full object-cover opacity-90 absolute" src={`${config.pathImg}/original/${backdrop_path}`} />
-            <div className="bg-primary-800/75 inset-0 absolute"></div>
+            {/* <div className="bg-primary-800/75 inset-0 absolute"></div> */}
+            <div className="bg-gradient-to-t from-primary to-primary/30 inset-0 absolute"></div>
             <div className="container relative px-2 sm:px-4 mx-auto flex flex-col md:flex-row gap-10 md:h-[600px]">
                 <div className="hidden md:block my-auto w-auto md:min-w-[300px]">
                     <img className="rounded-lg" src={`${config.pathImg}/w300/${poster_path}`} alt="" />

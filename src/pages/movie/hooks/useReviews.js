@@ -22,7 +22,10 @@ export const useReviews = (id) => {
         return { ...review }
     }) ?? [];
 
-    return { reviews, isLoading }
+
+    const isEmptyData = () => reviews.length <= 0 && !isLoading;
+
+    return { reviews, isLoading, isEmptyData }
 }
 
 const generateUrlImage = (avatar_path) => {

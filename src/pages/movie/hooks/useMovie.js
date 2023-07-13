@@ -11,9 +11,10 @@ export const useMovie = () => {
     const location = useLocation();
     const { movieId } = useParams();
 
-    const [data, setData] = useState(location.state ?? {});
+    const [data, setData] = useState(location.state.data ?? {});
     const enableSearch = !Boolean(data?.imdb_id);
-    const isEmptyData = Object.keys(data).length <= 0;
+    const isEmptyData = !Boolean(data?.imdb_id);
+    const isRefetch = Boolean(location?.state?.refetch);
 
     const { data: response, isLoading } = useQuery(['detail-movie', movieId], () => useFetch({
         url: `/movie/${movieId}`,
@@ -23,7 +24,10 @@ export const useMovie = () => {
     });
 
     useEffect(() => {
-        setData({ ...response })
+        //si no existe data previamente recibida y no es necesario realizar la peticion
+        if (!isEmptyData && !isRefetch) return;
+
+        setData({ ...response });
     }, [response]);
 
     return { data, isLoading, isEmptyData }

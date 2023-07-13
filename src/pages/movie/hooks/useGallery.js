@@ -12,7 +12,9 @@ export const useGallery = (id) => {
     });
 
     // const images = response?.backdrops.slice(0, 8) ?? []
-    const images = response?.backdrops ?? []
+    const images = response?.posters ?? []
 
-    return { images, isLoading }
+    const isEmptyData = () => images.length <= 0 && !isLoading;
+
+    return { images, isLoading, isEmptyData }
 }

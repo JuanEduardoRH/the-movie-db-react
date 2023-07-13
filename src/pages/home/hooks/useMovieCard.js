@@ -23,7 +23,7 @@ export const useMovieCard = (id) => {
     };
 
     const handlerClick = () => {
-        navigate(`/${id}`, { state: { id, ...detail } });
+        navigate(`/${id}`, { state: { id, data: detail } });
     };
 
     return { detail, handlerMouseEnter, handlerClick }
