@@ -13,13 +13,7 @@ export const RecommendationMovieSlide = ({ id, poster_path, title }) => {
     const navigate = useNavigate();
 
     const click = () => {
-        navigate(`/${id}`, {
-            state: {
-                refetch: true
-            }
-        });
-        // navigate(`/210763`);
-        // queryClient.invalidateQueries({ queryKey: ['detail-movie', id] });
+        navigate(`/${id}`);
         queryClient.refetchQueries({ queryKey: ['detail-movie', id] });
     }
 

@@ -4,9 +4,9 @@ import { useMovie } from "./hooks"
 
 export const Movie = () => {
 
-    const { data, isLoading, isEmptyData } = useMovie();
+    const { data, isLoading } = useMovie();
 
-    if (isEmptyData) return;
+    if (isLoading) return;
 
     return (
         <>
